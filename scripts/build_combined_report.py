@@ -300,6 +300,7 @@ TEMPLATE = """<!DOCTYPE html>
 </style></head><body><div class="wrap">
 <h1>SFC 持牌代表及负责人员（RO）统计 · 总表</h1>
 <div class="sub">Buy-side __NB__ 组 + Sell-side __NS__ 组 · 数据源：香港证监会公众纪录册 · licstatus = Active · SFO licence and/or AMLO licence · 抓取日期 __DATE__</div>
+<div class="sub"><a class="ce" href="output/sfc___STAMP__.xlsx">下载 Excel（output/sfc___STAMP__.xlsx · 总表 / 实体明细 / 人员明细）</a></div>
 
 <div class="cards">
   <div class="card"><div class="k">集团 / 公司数</div><div class="v">__NG__</div><div class="h">法人实体 __NE__ 家</div></div>
@@ -334,6 +335,7 @@ TEMPLATE = """<!DOCTYPE html>
 
 out = (TEMPLATE
        .replace("__DATE__", datetime.date.today().strftime("%Y-%m-%d"))
+       .replace("__STAMP__", datetime.date.today().strftime("%Y%m%d"))
        .replace("__NB__", str(tb["n"])).replace("__NS__", str(ts["n"]))
        .replace("__NG__", str(tg["n"])).replace("__NE__", str(tg["ent"]))
        .replace("__A__", fmt(tg["sum_entity"])).replace("__B__", fmt(tg["unique"]))
